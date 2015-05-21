@@ -1,9 +1,26 @@
 package br.edu.senai.model;
 
-public class AlternativaQuestao {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity(name = "tb_alternativa_questao")
+public class AlternativaQuestao implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_alternativa")
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "id_questao")
     private Questao questao;
+    @Column(name = "dsc_alternativa", nullable = false)
     private String descricao;
+    @Column(name = "ltr_alternativa", nullable = false)
     private char letra;
 
     public AlternativaQuestao() {
