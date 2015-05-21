@@ -9,6 +9,7 @@
     <class>br.edu.senai.model.Questao</class>
     <class>br.edu.senai.model.UnidadeCurricular</class>
     <class>br.edu.senai.model.AlternativaQuestao</class>
+    <class>br.edu.senai.model.GabaritoQuestao</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sgn3?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

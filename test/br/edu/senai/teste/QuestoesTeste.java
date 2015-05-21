@@ -39,7 +39,10 @@ public class QuestoesTeste {
         real.setQuestao(qualMelhorTime);
         
         //Guarda a alternativa correta no gabarito
-        GabaritoQuestao gab = new GabaritoQuestao(corinthians);
+        List<AlternativaQuestao> alternativasCorretas = new ArrayList<>();
+        alternativasCorretas.add(corinthians);
+        alternativasCorretas.add(barcelona);
+        GabaritoQuestao gab = new GabaritoQuestao(qualMelhorTime, alternativasCorretas);
         
         //Associou alternativas a questão
         List<AlternativaQuestao> listaAlternativas = new ArrayList<>();
@@ -57,8 +60,11 @@ public class QuestoesTeste {
         });
         
         //lendo o gabarito
-        System.out.println("resposta correta é: " + gab.getAlternativa().getDescricao());
-        
+        System.out.println("a(s) resposta(s) correta(s) é(são): ");
+        alternativasCorretas.stream().forEach((x) -> {
+            System.out.println(x.getDescricao());
+        });
+                
         Assert.assertEquals(3, qualMelhorTime.getAlternativas().size());
         
         List<Questao> questoes = new ArrayList<>();

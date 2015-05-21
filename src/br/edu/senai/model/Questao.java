@@ -29,11 +29,8 @@ public class Questao implements Serializable {
     private TipoQuestao tipoQuestao;
     @Enumerated
     @Column(name = "val_nivel")
-    private NivelQuestao nivelDificuldade;
+    private NivelQuestao nivelDificuldade;    
     
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "")
-    private List<GabaritoQuestao> gabarito;
-
     public Questao() {
     }
 
@@ -45,7 +42,6 @@ public class Questao implements Serializable {
         this.alternativas = alternativas;
         this.tipoQuestao = tipoQuestao;
         this.nivelDificuldade = nivel;
-        this.gabarito = gabarito;
     }
 
     public String getEnunciado() {
@@ -86,14 +82,6 @@ public class Questao implements Serializable {
 
     public void setNivelDificuldade(NivelQuestao nivelDificuldade) {
         this.nivelDificuldade = nivelDificuldade;
-    }
-
-    public List<GabaritoQuestao> getGabarito() {
-        return gabarito;
-    }
-
-    public void setGabarito(List<GabaritoQuestao> gabarito) {
-        this.gabarito = gabarito;
     }
 
     @Override

@@ -1,13 +1,16 @@
 package br.edu.senai.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity(name = "tb_gabarito_questao")
 public class GabaritoQuestao implements Serializable {
@@ -15,25 +18,29 @@ public class GabaritoQuestao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_gabarito")
     private int id;
-    @ManyToOne
-    @JoinColumn(name = "id_questao")
+    @OneToOne
+    @JoinColumn(name = "id_questao", unique = true)
     private Questao questao;
-    private AlternativaQuestao alternativa;
+    
+    @ManyToMany
+    @JoinTable(name = "tb_gabarito_alternativa", joinColumns = @JoinColumn(name = "id_gabarito"), 
+            inverseJoinColumns = @JoinColumn(name = "id_alternativa"))
+    private List<AlternativaQuestao> alternativasCorretas;
 
     public GabaritoQuestao() {
     }
 
-    public GabaritoQuestao(Questao questao, AlternativaQuestao alternativa) {
+    public GabaritoQuestao(Questao questao, List<AlternativaQuestao> alternativasCorretas) {
         this.questao = questao;
-        this.alternativa = alternativa;
+        this.alternativasCorretas = alternativasCorretas;
     }
 
-    public AlternativaQuestao getAlternativa() {
-        return alternativa;
+    public List<AlternativaQuestao> getAlternativasCorretas() {
+        return alternativasCorretas;
     }
 
-    public void setAlternativa(AlternativaQuestao alternativa) {
-        this.alternativa = alternativa;
+    public void setAlternativasCorretas(List<AlternativaQuestao> alternativasCorretas) {
+        this.alternativasCorretas = alternativasCorretas;
     }
 
     public Questao getQuestao() {

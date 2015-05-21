@@ -1,12 +1,14 @@
 package br.edu.senai.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "tb_alternativa_questao")
@@ -22,14 +24,17 @@ public class AlternativaQuestao implements Serializable {
     private String descricao;
     @Column(name = "ltr_alternativa", nullable = false)
     private char letra;
+    @ManyToMany(mappedBy = "alternativasCorretas")
+    private List<GabaritoQuestao> gabaritos;
 
     public AlternativaQuestao() {
     }
 
-    public AlternativaQuestao(int id, Questao questao, String descricao) {
+    public AlternativaQuestao(int id, Questao questao, String descricao, List<GabaritoQuestao> gabaritos) {
         this.id = id;
         this.questao = questao;
         this.descricao = descricao;
+        this.gabaritos = gabaritos;
     }
 
     public Questao getQuestao() {
@@ -54,6 +59,14 @@ public class AlternativaQuestao implements Serializable {
 
     public void setLetra(char letra) {
         this.letra = letra;
+    }
+
+    public List<GabaritoQuestao> getGabaritos() {
+        return gabaritos;
+    }
+
+    public void setGabaritos(List<GabaritoQuestao> gabaritos) {
+        this.gabaritos = gabaritos;
     }
     
     @Override
