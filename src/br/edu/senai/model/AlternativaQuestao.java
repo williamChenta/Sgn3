@@ -48,6 +48,14 @@ public class AlternativaQuestao implements Serializable {
         this.descricao = descricao;
     }
 
+    public char getLetra() {
+        return letra;
+    }
+
+    public void setLetra(char letra) {
+        this.letra = letra;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;

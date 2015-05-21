@@ -2,6 +2,7 @@ package br.edu.senai.teste;
 
 import br.edu.senai.business.AvaliacaoFactory;
 import br.edu.senai.model.AlternativaQuestao;
+import br.edu.senai.model.Curso;
 import br.edu.senai.model.GabaritoQuestao;
 import br.edu.senai.model.NivelProva;
 import br.edu.senai.model.Questao;
@@ -16,6 +17,8 @@ public class QuestoesTeste {
     
     @Test
     public void questaoAlternativas() {
+        //criou curso
+        Curso curso = new Curso(1, "Técnico em informática", null);
         
         //Criou questão
         Questao qualMelhorTime = new Questao();
@@ -60,7 +63,7 @@ public class QuestoesTeste {
         
         List<Questao> questoes = new ArrayList<>();
         questoes.add(qualMelhorTime);
-        UnidadeCurricular logicaProgramacao = new UnidadeCurricular("Lógica de programação", 160, questoes);
+        UnidadeCurricular logicaProgramacao = new UnidadeCurricular("Lógica de programação", 160, questoes, curso);
         
         AvaliacaoFactory af = new AvaliacaoFactory();
         af.setNivelProva(NivelProva.FACIL);

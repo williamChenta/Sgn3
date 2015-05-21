@@ -75,4 +75,26 @@ public class Pessoa implements Serializable {
     public void setTipoComunicacao(TipoComunicacao tipoComunicacao) {
         this.tipoComunicacao = tipoComunicacao;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pessoa other = (Pessoa) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
 }
