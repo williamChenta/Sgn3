@@ -23,7 +23,8 @@ public class GabaritoQuestao implements Serializable {
     private Questao questao;
     
     @ManyToMany
-    @JoinTable(name = "tb_gabarito_alternativa", joinColumns = @JoinColumn(name = "id_gabarito"), 
+    @JoinTable(name = "tb_gabarito_alternativa", 
+            joinColumns = @JoinColumn(name = "id_gabarito"), 
             inverseJoinColumns = @JoinColumn(name = "id_alternativa"))
     private List<AlternativaQuestao> alternativasCorretas;
 

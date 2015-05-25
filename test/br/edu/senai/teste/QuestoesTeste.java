@@ -72,7 +72,7 @@ public class QuestoesTeste {
         UnidadeCurricular logicaProgramacao = new UnidadeCurricular("Lógica de programação", 160, questoes, curso);
         
         AvaliacaoFactory af = new AvaliacaoFactory();
-        af.setNivelProva(NivelProva.FACIL);
+        af.setNivelProva(NivelProva.DIFICIL);
         af.setNumQuestoes(22);
         af.setUnidadeCurricular(logicaProgramacao);
         af.gerarAvaliacao();
